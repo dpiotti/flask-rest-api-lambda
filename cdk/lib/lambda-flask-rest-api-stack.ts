@@ -27,7 +27,7 @@ export class LambdaFlaskRestApi extends Stack {
     const httpApi = new HttpApi(this, 'HttpApi', { apiName: 'flask-api-demo' });
 
     httpApi.addRoutes({
-      path: '/',
+      path: '/{proxy+}',
       methods: [HttpMethod.ANY],
       integration: flaskApiIntegration,
     });

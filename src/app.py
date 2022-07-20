@@ -1,11 +1,17 @@
-from quart import Quart
+from quart import Quart, request, jsonify
 
 app = Quart(__name__)
 
 
 @app.route("/")
 async def test():
-    return "test!"
+    return jsonify({"response": "Hello"})
+
+
+@app.route("/args")
+async def args():
+    args = request.args
+    return jsonify({"response": args})
 
 
 if __name__ == "__main__":
